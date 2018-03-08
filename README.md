@@ -1,5 +1,4 @@
-Ce repository contient l'ensemble des exercices de TD du module POO de 
-l'Ecole nationale Supérieure d'Informatique 2017/2018. Il est destiné à toute
-personne désirant apprendre la programmation orientée objet. 
-Les programmes étudiés ont un but purement pédagogique, ce projet est donc
-principalement destiné aux étudiants.
+Ce projet est destiné à toute personne souhaitant apprendre la programmation
+orientée objet. Les projets sont en Java, et ont été créés avec intelliJ idea
+de JetBrains à but purement pédagogique, et sont les exercices du module POO
+de l'Ecole nationale Supérieure d'Informatique 2017/2018.
