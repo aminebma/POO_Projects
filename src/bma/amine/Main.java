@@ -24,7 +24,7 @@ public class Main {
             mat.add(sc.nextInt());
             sc.nextLine();
         }
-//        Personne insane = new Personne(nom.get(0),prenom.get(0),dateNaiss.get(0));
+//      Personne insane = new Personne(nom.get(0),prenom.get(0),dateNaiss.get(0));
 //	    insane.Afficher();
 	    Enseignant chikh = new Enseignant("HIDOUCI","Khaled","25/12/0000",1548,modules);
 	    chikh.Afficher();
