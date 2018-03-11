@@ -1,6 +1,6 @@
 package bma.amine;
 
-public class Animal {
+public class Animal implements Comparable<Animal>{
     private String nom;
 
     public Animal(String nom)
@@ -16,8 +16,8 @@ public class Animal {
         this.nom = nom;
     }
 
-    /*public boolean equals(Animal haycha){
-        return this.nom.equals(haycha.nom);
+    /*public boolean equals(Animal animal){
+        return this.nom.equals(animal.nom);
     }*/
 
     public boolean equals(Object o){
@@ -31,4 +31,7 @@ public class Animal {
         return nom.hashCode();
     }
 
+    public int compareTo(Animal animal) {
+        return nom.compareTo(animal.nom);
+    }
 }
