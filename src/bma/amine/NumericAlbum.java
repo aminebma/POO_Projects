@@ -1,4 +1,5 @@
 package bma.amine;
 
-public class NumericAlbum implements Album {
+public class NumericAlbum extends Album {
+
 }

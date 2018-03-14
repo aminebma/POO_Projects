@@ -1,4 +1,4 @@
 package bma.amine;
 
-public class PhysicAlbum implements Album,Remboursable{
+public class PhysicAlbum extends Album implements Remboursable{
 }

@@ -1,4 +1,7 @@
 package bma.amine;
 
-public interface Album {
+import java.util.TreeMap;
+
+public abstract class Album extends Product{
+    private TreeMap<Integer,String> titles;
 }
