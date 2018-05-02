@@ -1,4 +1,6 @@
 package tdGui.IU;
+import com.sun.prism.paint.Color;
+import sun.plugin2.util.ColorUtil;
 import tdGui.Noyau.Calcul;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,8 +26,11 @@ public class Calculatrice extends Stage {
     private Op opDeclench = Op.NOOP;
     private TextField ecran=creerEcran();
     final GridPane boutons = creerBoutons();
-
+    private double op=0;
+    private boolean pressed=false,waiting=false;
+    private Calcul calc;
     public Calculatrice(){
+        calc = new Calcul();
         this.setTitle("Calculatrice");
         this.setResizable(false);
         this.setScene(new Scene(creerLayout(ecran,boutons), 280, 340));
@@ -64,6 +69,59 @@ public class Calculatrice extends Stage {
         Button bouton = new Button(s);
         bouton.setPrefSize(100,20);
         bouton.setFont(Font.font ("Ubuntu", 20));
+        if(isNumeric(s))
+        {
+            bouton.setOnAction(new EventHandler<ActionEvent>(){
+                public void handle(ActionEvent actionEvent)
+                {
+                    if("0".equals(s) && ecran.getText()!="") ecran.setText(ecran.getText()+s);
+                    else ecran.setText(ecran.getText()+s);
+                }
+            });
+        }else {
+            if ("+".equals(s)) {
+                bouton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent actionEvent)
+                    {
+                        if(waiting) {
+                            op=calc.somme(op,Double.parseDouble(ecran.getText()));
+                            ecran.setText(String.valueOf(op));
+                            pressed=false;
+                            waiting=false;
+                        }else {
+                            if(!pressed && !waiting)
+                            {
+                                op=Double.parseDouble(ecran.getText());
+                                ecran.setText("");
+                                pressed=true;
+                                waiting=true;
+                            }
+                        }
+                    }
+                } );
+            }
+            if ("-".equals(s)) {
+                bouton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent actionEvent)
+                    {
+                    }
+                } );
+            }
+            if ("*".equals(s)) {
+                bouton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent actionEvent)
+                    {
+                    }
+                } );
+            }
+            if ("/".equals(s)) {
+                bouton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent actionEvent)
+                    {
+                    }
+                } );
+            }
+        }
         return bouton;
     }
     private VBox creerLayout(TextField ecran, GridPane boutons) {
@@ -88,5 +146,14 @@ public class Calculatrice extends Stage {
                 cacheValue=0;
             }
         });
+    }
+
+    private boolean isNumeric(String s){
+        try {
+            int test = Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
     }
 }
